@@ -9,23 +9,16 @@ $caller_id = getOutboundDialingCallerId();
 date_default_timezone_set('America/New_York');
 header("content-type: text/xml");
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-
-if (in_array(date("l"), ["Saturday", "Sunday"])) {
-    // Weekend
-    echo "weekend: office hours";
-} else {
-    // Weekday
-    if (date('G') >= 9 && date('G') < 17) {
-        echo "weekday: office hours";
-    }
-    echo "weekday: after hours";
-}
-
-$conferences = $twilioClient->conferences->read(array ("friendlyName" => $_REQUEST['FriendlyName'] ));
-$participants = $twilioClient->conferences($conferences[0]->sid)->participants->read();
-$callerSid = $participants[0]->callSid;
-
-$twilioClient->calls($callerSid)->update(array(
-    "method" => "GET",
-    "url" => "/voicemail.php?caller_id=$caller_id&caller_number=$callerNumber"
-));
+?>
+<Say voice="Polly.Kendra" language="en-US">Please wait while we connect your call</Say>
+<Dial>
+    <Conference waitUrl="https://pjoyce.photos/becky/lovelyday.mp3"
+                statusCallback="dialer.php?Caller=<?php echo $_REQUEST['Called'] ?>"
+                startConferenceOnEnter="false"
+                endConferenceOnExit="true"
+                statusCallbackMethod="GET"
+                statusCallbackEvent="start join end leave"
+                beep="false">
+        2
+    </Conference>
+</Dial>
