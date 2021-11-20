@@ -3,6 +3,7 @@ include 'functions.php';
 require_once 'vendor/autoload.php';
 
 use Twilio\Rest\Client;
+
 $sid                        = $GLOBALS['twilio_account_sid'];
 $token                      = $GLOBALS['twilio_auth_token'];
 try {
