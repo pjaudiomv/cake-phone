@@ -1,11 +1,5 @@
-/nbproject/private/
-cookie.txt
 .idea
 .DS_Store
-*_cookie.txt
-config.*.php
-test.php
+config.*
 vendor
-admin/dist/js
-admin/dist/css
 node_modules
