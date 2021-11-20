@@ -1,6 +1,8 @@
 <?php
 require_once 'config.php';
 
+date_default_timezone_set('America/New_York');
+
 class SpecialPhoneNumber
 {
     const VOICE_MAIL = "voicemail";

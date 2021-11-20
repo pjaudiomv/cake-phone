@@ -1,4 +1,5 @@
 <?php
+include 'functions.php';
 header("content-type: text/xml");
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 ?>
@@ -8,7 +9,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
     </Say>
     <Record
         playBeep="true"
-        recordingStatusCallback="<?php echo getWebhookUrl()?>voicemail-complete.php?caller_id=<?php echo urlencode($_REQUEST["caller_id"])?>&amp;caller_number=<?php echo urlencode($_REQUEST["Caller"])?>"
+        recordingStatusCallback="<?php echo getWebhookUrl()?>/voicemail-complete.php?caller_id=<?php echo urlencode($_REQUEST["caller_id"])?>&amp;caller_number=<?php echo urlencode($_REQUEST["Caller"])?>"
         recordingStatusCallbackMethod="GET"
         maxLength="120"
         timeout="15"/>

@@ -25,8 +25,20 @@ function getCallConfig($client)
     }
     $caller_id = isset($_REQUEST["Caller"]) ? $_REQUEST["Caller"] : "0000000000";
     $config = new CallConfig();
-    $config->phone_number = $GLOBALS['recipient'];
-    $config->voicemail_url = $webhook_url . '/voicemail.php?caller_id=' . $caller_id;
+
+    if (in_array(date("l"), ["Saturday", "Sunday"])) {
+        // Weekend
+        $config->phone_number = SpecialPhoneNumber::VOICE_MAIL;
+    } else {
+        // Weekday
+        if (date('G') >= 9 && date('G') < 17) {
+            $config->phone_number = $GLOBALS['recipient'];
+        }
+        echo "weekday: after hours";
+    }
+
+//    $config->phone_number = $GLOBALS['recipient'];
+    $config->voicemail_url = $webhook_url . '/voicemail.php?caller_id=' . trim($caller_id);
     $config->options = array(
         'url'                  => $webhook_url . '/outdial-response.php?conference_name=' . $_REQUEST['FriendlyName'],
         'statusCallback'       => $webhook_url . '/dialer.php?tracker=' . ++ $tracker . '&FriendlyName=' . $_REQUEST['FriendlyName'],
@@ -49,7 +61,6 @@ try {
 
 $conferences = $client->conferences->read(array ("friendlyName" => $_REQUEST['FriendlyName'] ));
 if (count($conferences) > 0 && $conferences[0]->status != "completed") {
-    // Make timeout configurable per volunteer
     if (( isset($_REQUEST['SequenceNumber']) && intval($_REQUEST['SequenceNumber']) == 1 ) ||
         ( isset($_REQUEST['CallStatus']) && ( $_REQUEST['CallStatus'] == 'no-answer' || $_REQUEST['CallStatus'] == 'completed' ) )) {
         $callConfig = getCallConfig($client);
@@ -75,7 +86,6 @@ if (count($conferences) > 0 && $conferences[0]->status != "completed") {
                             "from" => $callConfig->options['callerId']
                         )
                     );
-
 
                     $client->calls->create(
                         $callConfig->phone_number,
