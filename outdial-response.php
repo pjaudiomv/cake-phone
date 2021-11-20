@@ -20,7 +20,7 @@ $participants = $client->conferences($conferences[0]->sid)->participants->read()
 
 <Response>
     <?php if (count($participants) > 0) {?>
-        <Gather numDigits="1" timeout="15" action="helpline-answer-response.php?conference_name=<?php echo $_REQUEST['conference_name'] ?>" method="GET">
+        <Gather numDigits="1" timeout="15" action="answer-response.php?conference_name=<?php echo $_REQUEST['conference_name'] ?>" method="GET">
             <Say voice="Polly.Kendra" language="en-US">
                 You have a call from becky bakes cakes, press 1 to accept.  Press any other key to hangup.
             </Say>

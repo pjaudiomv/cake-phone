@@ -71,7 +71,7 @@ if (count($conferences) > 0 && $conferences[0]->status != "completed") {
                     $client->messages->create(
                         $callConfig->phone_number,
                         array(
-                            "body" => "You have an incoming helpline call from " . $callerNumber . ".",
+                            "body" => "You have an becky bakes cakes call from " . $callerNumber . ".",
                             "from" => $callConfig->options['callerId']
                         )
                     );
