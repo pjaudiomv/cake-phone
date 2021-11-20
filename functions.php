@@ -29,4 +29,13 @@ function getWebhookUrl()
     } else {
         return $voice_url;
     }
+
+
+//    if (strpos(basename($voice_url), ".php")) {
+//        $webhook_url = substr($voice_url, 0, strrpos($voice_url, "/"));
+//    } elseif (strpos($voice_url, "?")) {
+//        $webhook_url =  substr($voice_url, 0, strrpos($voice_url, "?"));
+//    } else {
+//        $webhook_url = $voice_url;
+//    }
 }

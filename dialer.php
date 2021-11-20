@@ -30,7 +30,7 @@ function getCallConfig($client)
         // Weekend
         $config->phone_number = SpecialPhoneNumber::VOICE_MAIL;
     } else {
-        // Weekday
+        // Weekday 9-5
         if (date('G') >= 9 && date('G') < 17) {
             $config->phone_number = $GLOBALS['recipient'];
         }
