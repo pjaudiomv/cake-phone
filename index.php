@@ -1,6 +1,4 @@
-<?php
-echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-?>
+<?php echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"; ?>
 
 <Response>
     <Say voice="Polly.Kendra" language="en-US">Please wait while we connect your call</Say>
