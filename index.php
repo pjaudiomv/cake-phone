@@ -3,8 +3,8 @@ include 'config.php';
 $menuInput = $_GET["Digits"];
 $recipientNumber = $GLOBALS['recipient'];
 header("content-type: text/xml");
-error_log(print_r($_REQUEST, true));
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+//error_log(print_r($_REQUEST, true));
 ?>
 <Response>
 <?php if ($_REQUEST["From"] == $recipientNumber) { ?>
