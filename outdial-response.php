@@ -5,7 +5,8 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 
 <Response>
     <?php if ($_POST["Digits"] == "1") { ?>
-        <Say voice="Polly.Kendra" language="en-US">Connecting You To The Caller</Say>
+        <Play>https://bmlt.charlestonna.org/recordings/outdial-response.wav</Play>
+<!--        <Say voice="Polly.Kendra" language="en-US">Connecting You To The Caller</Say>-->
     <?php } ?>
     <?php if ($_POST["Digits"] == "2") { ?>
         <Hangup/>
