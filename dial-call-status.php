@@ -5,7 +5,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 
 <Response>
 <?php if (in_array($_REQUEST["DialCallStatus"], ["busy", "no-answer", "failed"])) { ?>
-    <Play>https://bmlt.charlestonna.org/recordings/voicemail.wav</Play>
+    <Play>https://bmlt.charlestonna.org/recordings/voicemail.mp3</Play>
 <!--    <Say voice="Polly.Kendra" language="en-US">I am sorry. No one is around at the moment to take your call. Please leave a message after the tone, hang up when finished.</Say>-->
     <Record playBeep="true"
             recordingStatusCallback="./voicemail-handle.php?caller_id=<?php echo urlencode($_REQUEST["To"])?>&amp;caller_number=<?php echo urlencode($_REQUEST["Caller"])?>"
