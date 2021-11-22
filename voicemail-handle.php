@@ -11,7 +11,8 @@ try {
         $GLOBALS['recipient'],
         array(
             "from" => $_REQUEST["caller_id"],
-            "body" => "You have a message for becky bakes cakes from " . $_REQUEST["caller_number"] . ", " . $_REQUEST["RecordingUrl"] . ".mp3"
+            "body" => "You have a message for becky bakes cakes from " . $_REQUEST["caller_number"],
+            'mediaUrl' => $_REQUEST["RecordingUrl"] . ".mp3"
         )
     );
 } catch (\Twilio\Exceptions\ConfigurationException $e) {
