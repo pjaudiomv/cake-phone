@@ -14,7 +14,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
             recordingStatusCallback="./voicemail-handle.php?caller_id=<?php echo urlencode($_REQUEST["To"])?>&amp;caller_number=<?php echo urlencode($_REQUEST["Caller"])?>"
             recordingStatusCallbackMethod="GET"
             maxLength="120"
-            timeout="15"/>
+            timeout="15" />
     <Say voice="Polly.Kendra" language="en-US">I did not receive a recording</Say>
 <?php } else { ?>
     <Hangup/>
